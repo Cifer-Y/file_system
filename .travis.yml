@@ -13,7 +13,7 @@ matrix:
       elixir: 1.4
     - otp_release: 20.0
       elixir: 1.4
-sudo: false
+sudo: true
 notifications:
   recipients:
     - self@falood.me
