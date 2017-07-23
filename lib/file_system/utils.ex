@@ -1,7 +1,7 @@
 defmodule FileSystem.Utils do
   def format_path(path) when is_list(path) do
     for i <- path do
-      i |> Path.absname |> to_charlist
+      i |> Path.absname |> to_char_list
     end
   end
 
@@ -14,7 +14,7 @@ defmodule FileSystem.Utils do
     str |> String.split |> format_args
   end
   def format_args(list) when is_list(list) do
-    list |> Enum.map(&to_charlist/1)
+    list |> Enum.map(&to_char_list/1)
   end
 
 end

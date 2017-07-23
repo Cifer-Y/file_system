@@ -43,6 +43,6 @@ defmodule FileSystem.Backends.FSInotifyTest do
       ["/one two", "CLOSE_WRITE,CLOSE", "file 1"] |> to_port_line |> parse_line
   end
 
-  defp to_port_line(list), do: list |> Enum.join(<<1>>) |> to_charlist
+  defp to_port_line(list), do: list |> Enum.join(<<1>>) |> to_char_list
 
 end

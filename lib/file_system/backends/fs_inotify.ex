@@ -32,13 +32,13 @@ defmodule FileSystem.Backends.FSInotify do
 
   def init(args) do
     port_path = Utils.format_path(args[:dirs])
-    format = ["%w", "%e", "%f"] |> Enum.join(@sep_char) |> to_charlist
+    format = ["%w", "%e", "%f"] |> Enum.join(@sep_char) |> to_char_list
     port_args = [
       '-e', 'modify', '-e', 'close_write', '-e', 'moved_to', '-e', 'create',
       '-e', 'delete', '-e', 'attrib', '--format', format, '--quiet', '-m', '-r'
     ] ++ Utils.format_args(args[:listener_extra_args]) ++ port_path
     port = Port.open(
-      {:spawn_executable, to_charlist(find_executable())},
+      {:spawn_executable, to_char_list(find_executable())},
       [:stream, :exit_status, {:line, 16384}, {:args, port_args}, {:cd, System.tmp_dir!()}]
     )
     {:ok, %{port: port, worker_pid: args[:worker_pid]}}
